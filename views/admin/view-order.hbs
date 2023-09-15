@@ -1,0 +1,32 @@
+<section>
+    <div class="container mt-5">
+        <table class="table">
+            <th scope="col">Order Date</th>
+            <th scope="col">Customer Name</th>
+            <th scope="col">Address</th>
+            <th scope="col">Pincode</th>
+            <th scope="col">Payment Method</th>
+            <th scope="col">Total Price</th>
+            <th scope="col">Status</th>
+            <th scope="col">Options</th> 
+            <tbody>
+                {{#each orders}}
+                <tr>
+                    <td class="col">{{this.date}}</td>
+                    <td class="col">{{this.userInfo.Name}}</td>
+                    <td class="col">{{this.deliveryDetails.address}}</td>
+                    <td class="col">{{this.deliveryDetails.pincode}}</td>
+                    <td class="col">{{this.paymentMethod}}</td>
+                    <td class="col">{{this.totalPrice}}</td>
+                    <td class="col"><span id="order-status-{{this._id}}">{{this.status}}</span></td>
+                    <td class="col">
+                        <button type="button" class="btn btn-primary" onclick="changeOrderStatus('{{this._id}}','shipped')" id="btn-shipped-{{this._id}}">Shipped</button>
+                        <button type="button" class="btn btn-success" onclick="changeOrderStatus('{{this._id}}','complete')" id="btn-complete-{{this._id}}">Complete</button>
+                        <button type="button" class="btn btn-danger" onclick="changeOrderStatus('{{this._id}}','cancel')" id="btn-cancel-{{this._id}}">Cancel</button>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</section>

@@ -1,0 +1,18 @@
+<section>
+    <div class="container mt-5">
+        <table class="table">
+            <th scope="col">No.</th>
+            <th scope="col">Customer Name</th>
+            <th scope="col">Email Address</th>
+            <tbody>
+                {{#each users}}
+                <tr>
+                    <td class="col">{{@index}}</td>
+                    <td class="col">{{this.Name}}</td>
+                    <td class="col">{{this.Email}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</section>

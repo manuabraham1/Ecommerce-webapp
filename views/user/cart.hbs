@@ -1,0 +1,43 @@
+<section>
+    {{#if products}}
+    <div class="container">
+        <table class="table mt-5">
+            <thead>
+                <tr>
+                    <th scope="col">Item</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each products}}
+                <tr>
+                    <td><img src="/product-images/{{this.product._id}}.jpg" alt="" style="width: 70px; height: 70px;">
+                    </td>
+                    <td>{{this.product.name}}</td>
+                    <td>Rs.{{this.product.price}}</td>
+                    <td>
+                        <div class="input-group">
+                            <button class="cart-item-count mr-5" onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../user._id}}',-1 )">-</button>
+                            &nbsp;
+                            <span id="{{this.product._id}}">{{this.quantity}}</span>
+                            &nbsp;
+                            <button class="cart-item-count ml-5" onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../user._id}}',1)">+</button>
+                        </div>
+
+                    </td>
+                    <td>
+                        <button class="btn btn-danger" onclick="removeProduct('{{this.product._id}}','{{this._id}}')">Remove</button>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+        <hr>
+        <h3 class="mt-2 float-end" style="margin-right: 120px;">Total: Rs <span id="total">{{total}}</span></h3>
+        <a href="/place-order" class="float-end btn btn-success" style="margin-right: -180px;margin-top: 75px; width: 180px;">Place Order</a>
+    </div>
+    {{else}}
+        <p>Your Shopping Cart is Empty</p>
+    {{/if}}
+</section>
